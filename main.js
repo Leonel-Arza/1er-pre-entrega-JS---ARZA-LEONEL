@@ -19,16 +19,15 @@ function calcularFactor(plazo, tasaMensual) {
 function simuladorPrestamo() {
   alert("Bienvenido al simulador de préstamo personal");
 
+while (true) {
   const montoPrestamo = parseFloat(prompt("Ingrese el monto que desea solicitar:"));
   const tasaInteresAnual = parseFloat(prompt("Ingrese la tasa de interés anual (%):"));
   const plazoMeses = parseInt(prompt("Ingrese el plazo en meses:"));
 
   if (isNaN(montoPrestamo) || isNaN(tasaInteresAnual) || isNaN(plazoMeses) || plazoMeses <= 0) {
     console.log("Por favor, ingresar un valor numérico correcto.");
-    return;
-  }
-
-  const cuotaMensual = calcularCuotaMensual(montoPrestamo, tasaInteresAnual, plazoMeses);
+  } else {
+    const cuotaMensual = calcularCuotaMensual(montoPrestamo, tasaInteresAnual, plazoMeses);
 
   console.log("Monto del préstamo: $" + montoPrestamo);
   console.log("Tasa de interés anual: " + tasaInteresAnual + "%");
@@ -36,6 +35,14 @@ function simuladorPrestamo() {
   console.log("Cuota mensual: $" + cuotaMensual);
 
   alert("Cuota mensual: $" + cuotaMensual);
+}
+
+const continuar = prompt("¿Desea realizar otra simulación? (si/no)").toLowerCase();
+  if (continuar !== "si") {
+    console.log("¡Gracias por usar el simulador!");
+    break;
+  }
+}
 }
 
 
